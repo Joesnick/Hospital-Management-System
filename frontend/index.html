@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Hospital Management System</h1>
+
+    <h1>Patient Management</h1>
+
+    <h2>Patients</h2>
+    <button onclick="loadPatients()">Load Patients</button>
+    <div id="patients"></div>
+
+    <!-- Formulario para añadir un paciente -->
+    <form id="patient-form">
+        <label for="patient-id">ID:</label>
+        <input type="text" id="patient-id" name="id" required>    
+        <label for="patient-name">First Name:</label>
+        <input type="text" id="patient-name" name="name" required>    
+        <label for="patient-lastname">Last Name:</label>
+        <input type="text" id="patient-lastname" name="lastname" required>    
+        <label for="patient-birthdate">Birthdate:</label>
+        <input type="date" id="patient-birthdate" name="birthdate" required>    
+        <label for="patient-address">Address:</label>
+        <input type="text" id="patient-address" name="address" required>    
+        <label for="patient-phone">Phone Number:</label>
+        <input type="text" id="patient-phone" name="phone" required>    
+        <button type="button" onclick="addPatient(event)">Add Patient</button>
+    </form>
+    
+
+    <h1>Doctor Management</h1>
+
+    <h2>Doctors</h2>
+    <button onclick="loadDoctors()">Load Doctors</button>
+    <div id="doctors"></div>
+
+    <!-- Formulario para añadir un doctor -->
+    <form id="doctor-form">
+        <label for="doctor-id">ID Number:</label>
+        <input type="text" id="doctor-id" name="id_number" required>
+        <label for="doctor-name">Doctor Name:</label>
+        <input type="text" id="doctor-name" name="name" required>
+        <label for="doctor-lastname">Last Name:</label>
+        <input type="text" id="doctor-lastname" name="lastname" required>
+        <label for="doctor-specialty">Specialty:</label>
+        <input type="text" id="doctor-specialty" name="specialty" required>
+        <label for="doctor-license">License Number:</label>
+        <input type="text" id="doctor-license" name="license" required>
+        <label for="doctor-phone">Phone Number:</label>
+        <input type="text" id="doctor-phone" name="phone" required>
+        <button type="button" onclick="addDoctor(event)">Add Doctor</button>
+    </form>
+
+    <!-- Formulario para agregar cita -->
+    <h2>Appointments</h2>
+    <button onclick="loadAppointments()">Load Appointments</button>
+    <div id="appointments"></div>
+
+    <form id="appointmentForm">
+        <label for="appointment-date">Appointment date:</label>
+        <input type="date" id="date" required>        
+        <label for="appointment-time">Appointment time:</label>
+        <input type="time" id="time" required>        
+        <label for="purpose">Purpose:</label>
+        <input type="text" id="purpose" placeholder="Purpose of the appointment" required>        
+        <label for="status">Status appointment:</label>
+        <select id="status" required>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+            <option value="canceled">Canceled</option>
+        </select>        
+        <label for="patient_id">Patient ID:</label>
+        <input type="number" id="patient_id" required>        
+        <label for="doctor_id">Doctor ID:</label>
+        <input type="number" id="doctor_id" required>
+        
+        <button type="button" onclick="addAppointment()">Add Appointment</button>
+    </form>
+    
+
+    <!-- Formulario para agregar tratamiento -->
+    <h2>Treatments</h2>
+    <button onclick="loadTreatments()">Load Treatments</button>
+    <div id="treatments"></div>
+
+    <form id="treatmentForm">
+        <label for="treatmentCode">Treatment Code:</label>
+        <input type="text" id="treatmentCode" placeholder="Unique code" required>        
+        <label for="treatmentName">Treatment name:</label>
+        <input type="text" id="treatmentName" placeholder="Name" required>        
+        <label for="treatmentDescription">Treatment description:</label>
+        <input type="text" id="treatmentDescription" placeholder="Description" required>        
+        <label for="treatmentDuration">Treatment duration (days):</label>
+        <input type="number" id="treatmentDuration" placeholder="Duration" required>        
+        <label for="patientId">Patient ID:</label>
+        <input type="number" id="patientId" placeholder="Patient ID" required>        
+        <label for="doctorId">Doctor ID:</label>
+        <input type="number" id="doctorId" placeholder="Doctor ID" required>        
+        <button type="button" onclick="addTreatment()">Add Treatment</button>
+    </form>
+
+
+    <h2>Rooms</h2>
+    <button onclick="loadRooms()">Load Rooms</button>
+    <div id="rooms"></div>
+
+    <form id="roomForm">
+        <label for="roomNumber">Room number:</label>
+        <input type="text" id="roomNumber" placeholder="Room Number" required>
+        <label for="roomType">Room type:</label>
+        <select id="roomType" required>
+            <option value="Single">Single</option>
+            <option value="Shared">Shared</option>
+            <option value="ICU">ICU</option>
+        </select>
+        <label for="roomCapacity">Room capacity:</label>
+        <input type="number" id="roomCapacity" placeholder="Capacity" required>
+        <button type="button" onclick="addRoom()">Add Room</button>
+    </form>
+    
+
+    <h2>Internments</h2>
+    <button onclick="loadInternments()">Load Internments</button>
+    <div id="internments"></div>
+
+    <form id="internmentForm">
+        <label for="admissionDate">Admission date:</label>
+        <input type="date" id="admissionDate" required>
+        <label for="dischargeDate">Discharge date:</label>
+        <input type="date" id="dischargeDate">
+        <label for="internmentPatientId">Patient ID:</label>
+        <input type="number" id="internmentPatientId" placeholder="Patient ID" required>
+        <label for="internmentRoomId">Room ID:</label>
+        <input type="number" id="internmentRoomId" placeholder="Room ID" required>
+        <button type="button" onclick="addInternment()">Add Internment</button>
+    </form>
+
+    <h2>Prescriptions</h2>
+    <button onclick="loadPrescriptions()">Load Prescriptions</button>
+    <div id="prescriptions"></div>
+
+    <form id="prescriptionForm">
+        <label for="prescriptionCode">Prescription Code:</label>
+        <input type="text" id="prescriptionCode" placeholder="Prescription Code" required>    
+        <label for="prescriptionDate">Prescription Date:</label>
+        <input type="date" id="prescriptionDate" required>    
+        <label for="medicine">Medicine:</label>
+        <input type="text" id="medicine" placeholder="Medicine" required>    
+        <label for="dose">Dose:</label>
+        <input type="text" id="dose" placeholder="Dose" required>    
+        <label for="duration">Duration (days):</label>
+        <input type="number" id="duration" placeholder="Duration" required>    
+        <label for="prescriptionPatientId">Patient ID:</label>
+        <input type="number" id="prescriptionPatientId" placeholder="Patient ID" required>    
+        <label for="prescriptionDoctorId">Doctor ID:</label>
+        <input type="number" id="prescriptionDoctorId" placeholder="Doctor ID" required>    
+        <button type="button" onclick="addPrescription()">Add Prescription</button>
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
